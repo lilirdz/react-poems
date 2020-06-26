@@ -1,37 +1,35 @@
-import React from 'react';
+import React from "react";
 
+export class PoemForm extends React.Component {
+  state = {
+    name: "",
+    content: "",
+  };
 
-export class PoemForm extends React.Component{
+  setName = (e) => this.setState({ name: e.target.value });
 
-    state = {
-        name: '',
-        content: ''
-    }
+  setContent = (e) => this.setState({ content: e.target.value });
 
-    setName = e => this.setState({ name: e.target.value })
+  handleSubmit = () => {
+    this.props.createPoem(this.state.name, this.state.content);
+  };
 
-    setContent = e => this.setState({ content: e.target.value })
-
-    handleSubmit = () => {
-        // What should we do here?
-    }
-
-    render(){
-        return (
-            <div className="ui form">
-                <h1>Create Poem</h1>
-                <div className="field">
-                    <label>Name:</label>
-                    <input type="text" value={this.state.name} onChange={this.setName}/>
-                </div>
-                <div className="field">
-                    <label>Content:</label>
-                    <textarea value={this.state.content} onChange={this.setContent}/>
-                </div>
-                <button className="ui green button" onClick={this.handleSubmit} >Create</button>
-            </div>
-        )
-    }
-
-
+  render() {
+    return (
+      <div className="ui form">
+        <h1>Create Poem</h1>
+        <div className="field">
+          <label>Name:</label>
+          <input type="text" value={this.state.name} onChange={this.setName} />
+        </div>
+        <div className="field">
+          <label>Content:</label>
+          <textarea value={this.state.content} onChange={this.setContent} />
+        </div>
+        <button className="ui green button" onClick={this.handleSubmit}>
+          Create
+        </button>
+      </div>
+    );
+  }
 }
